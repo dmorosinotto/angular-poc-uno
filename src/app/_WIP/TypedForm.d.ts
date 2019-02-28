@@ -5,8 +5,8 @@ type FormControl = import("@angular/forms").FormControl;
 type AbstractControl = import("@angular/forms").AbstractControl;
 type Observable<T> = import("rxjs").Observable<T>;
 
-type STATUS = "VALID" | "INVALID" | "PENDING" | "DISABLED"; //<- I don't know why Angular Team doesn't define it https://github.com/angular/angular/blob/7.2.7/packages/forms/src/model.ts#L15-L45)
-type STATUSs = STATUS | string; //<- string is added only becouse Angular base class is "wrong" https://github.com/angular/angular/blob/7.2.7/packages/forms/src/model.ts#L196)
+type STATUS = "VALID" | "INVALID" | "PENDING" | "DISABLED"; //<- I don't know why Angular Team does not define it https://github.com/angular/angular/blob/7.2.7/packages/forms/src/model.ts#L15-L45)
+type STATUSs = STATUS | string; //<- string is added only becouse Angular base class used it insted of union type https://github.com/angular/angular/blob/7.2.7/packages/forms/src/model.ts#L196)
 
 //OVVERRIDE TYPES WITH STRICT TYPED INTERFACES + SOME TYPE TRICKS TO COMPOSE INTERFACE (https://github.com/Microsoft/TypeScript/issues/16936)
 interface AbstractControlTyped<T> extends AbstractControl {

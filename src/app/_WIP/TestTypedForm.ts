@@ -36,8 +36,8 @@ function testFormGroupTyped() {
   var z: string = frm.get("d").value.z; //ERROR - but reading unknown force you to check before access
   frm.get("b").valueChanges.subscribe(b => console.log(b)); //OK - infer boolean correctly without cast
   frm.get("d").valueChanges.subscribe((u: { z: string }) => console.log(u.z)); //OK - explicit type cast to read from unknown
-  frm.get("d").value; //OK - anything is valid
-  frm.get("d").disable(); //OK method with correct signature :-)
+  frm.get("d").value; //OK infer unknow
+  frm.get("d").disable({ emitEvent: false }); //OK method with correct signature :-)
   frm.removeControl("b"); //OK with auto-complete "b" :-)
   frm.removeControl("d"); //OK
   frm.setControl("b", testFormControlTyped()); //OK method with strict signature :-)
