@@ -22,11 +22,11 @@ import { BaseFrmComponent } from "../base-form/base-form.component";
   styles: []
 })
 export class NameFrmComponent extends BaseFrmComponent<{ name: string; surname: string }> {
-  initFrm(): FormGroup {
+  initFrm() {
     return new FormGroup({
       name: new FormControl(""),
       surname: new FormControl("")
-    });
+    }) as FormGroupTyped<{ name: string; surname: string }>;
   }
 
   constructor(@Self() public controlDir: NgControl) {

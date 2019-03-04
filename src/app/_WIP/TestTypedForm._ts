@@ -25,7 +25,7 @@ function testFormGroupTyped() {
   frm.setValue({ a: [1, 23], b: true, c: { s: "s", n: 1 } }); // OK
   frm.setValue({ b: false }, { onlySelf: true, emitEvent: false }); //ERROR -> setValue constraint to full T
   frm.patchValue({ b: true }, { onlySelf: true, emitEvent: false }); //OK -> patchValue accept Partial<T>
-  frm.patchValue({ bb: true }, { onlySelf: true, emitEvent: false }); //ERROR -> not valid type Partial<T>
+  frm.patchValue({ bb: false }, { onlySelf: true, emitEvent: false }); //ERROR -> not valid type Partial<T>
   frm.removeControl("a"); //OK with auto-complete "a"
   frm.removeControl("d"); //OK
   frm.registerControl("a", new FormControl(null));

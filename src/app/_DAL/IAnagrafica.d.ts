@@ -1,9 +1,12 @@
+type IRecapito = import("./IRecapito").IRecapito;
+
 interface IAnagrafica {
   residenza: IAddress;
   spedizione: {
     uguaglio: boolean;
-    recapito: IAddress;
+    recapito?: IAddress;
   };
+  spedizioneT: IRecapito;
   contatti: IContatto[];
 
   coniuge: INominativo & {
@@ -14,13 +17,6 @@ interface IAnagrafica {
     surname: string;
   };
   amici: [{ name: string; surname: string }];
-}
-
-interface IAddress {
-  via: string;
-  cap: number;
-  citta: string;
-  prov: string;
 }
 
 interface IContatto {

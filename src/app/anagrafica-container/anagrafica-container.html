@@ -1,12 +1,8 @@
 <div [formGroup]="frm">
   <app-nominativo-fld></app-nominativo-fld>
   <app-address-frm formControlName="residenza"></app-address-frm>
-  <div formGroupName="spedizione">
-    <label class="checkbox-label"
-      ><input type="checkbox" formControlName="uguaglio" /> Scrivi anche l'indirizzo di spedizione</label
-    >
-    <app-address-frm formControlName="recapito"></app-address-frm>
-  </div>
+  <app-recapito-frm formControlName="spedizione"></app-recapito-frm>
+
   <app-name-frm formControlName="referente"></app-name-frm>
   <!--<app-amici-arr fo rmArrayName="amici"></app-amici-arr>-->
   <app-amici-arr formControlName="XXX"></app-amici-arr>

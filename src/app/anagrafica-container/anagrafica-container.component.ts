@@ -15,10 +15,7 @@ export class AnagraficaContainerComponent extends BaseComponent implements OnIni
     super();
     this.frm = new FormGroup({
       residenza: new FormControl(null),
-      spedizione: new FormGroup({
-        uguaglio: new FormControl(false),
-        recapito: new FormControl(null)
-      }),
+      spedizione: new FormControl(null),
       referente: new FormControl(null),
       //amici: new FormArray([])
       XXX: new FormControl(null),

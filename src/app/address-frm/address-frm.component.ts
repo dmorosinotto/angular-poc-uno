@@ -33,7 +33,7 @@ export class AddressFrmComponent extends BaseFrmComponent<IAddress> {
       cap: new FormControl(0),
       citta: new FormControl(""),
       prov: new FormControl("")
-    });
+    }) as FormGroupTyped<IAddress>;
   }
   constructor(@Self() public controlDir: NgControl) {
     super(controlDir);

@@ -1,15 +1,15 @@
 import { Self } from "@angular/core";
 import { FormGroup, NgControl, ControlValueAccessor } from "@angular/forms";
 import { BaseComponent } from "../base-destroy-cmp/base.component";
-
+type IKNOW_T_ISVALID_PARTIAL = any;
 export abstract class BaseFrmComponent<T> extends BaseComponent implements ControlValueAccessor {
   onTouch = () => {};
   //onTouch: () => {};
   // onChange: (_: any) => {};
 
-  abstract initFrm(): FormGroup;
+  abstract initFrm(): FormGroupTyped<T>;
 
-  frm: FormGroup;
+  frm: FormGroupTyped<T>;
   constructor(@Self() public controlDir: NgControl) {
     super();
     this.frm = this.initFrm();
@@ -18,7 +18,7 @@ export abstract class BaseFrmComponent<T> extends BaseComponent implements Contr
   }
   writeValue(val: T): void {
     // console.log("val", val, " model -> view");
-    val && this.frm.patchValue(val, { emitEvent: false });
+    val && this.frm.patchValue(val as IKNOW_T_ISVALID_PARTIAL, { emitEvent: false, onlySelf: true });
   }
 
   registerOnChange(fnChange: (val: T) => void): void {

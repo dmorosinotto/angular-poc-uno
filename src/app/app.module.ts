@@ -12,6 +12,7 @@ import { NameFrmComponent } from "./name-frm/name-frm.component";
 import { AmiciArrComponent } from "./amici-arr/amici-arr.component";
 import { FormAttachNameDirective } from "./form-attach-name.directive";
 import { UiTextboxComponent } from "./ui-textbox/ui-textbox.component";
+import { RecapitoFrmComponent } from './recapito-frm/recapito-frm.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { UiTextboxComponent } from "./ui-textbox/ui-textbox.component";
     NameFrmComponent,
     AmiciArrComponent,
     FormAttachNameDirective,
-    UiTextboxComponent
+    UiTextboxComponent,
+    RecapitoFrmComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
