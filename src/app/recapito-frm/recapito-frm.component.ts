@@ -1,6 +1,6 @@
 import { Component, Self } from "@angular/core";
 import { FormGroup, FormControl, NgControl } from "@angular/forms";
-import { BaseFrmComponent } from "../base-form/base-form.component";
+import { BaseFrmComponent } from "../base-frm/base-frm.component";
 import { IRecapito } from "../_DAL/IRecapito";
 import { takeUntil } from "rxjs/operators";
 

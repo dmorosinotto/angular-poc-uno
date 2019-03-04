@@ -21,7 +21,8 @@ export class AnagraficaContainerComponent extends BaseComponent implements OnIni
       XXX: new FormControl(null),
       coniuge: new FormGroup({
         sposato: new FormControl(false)
-      })
+      }),
+      data: new FormControl(null)
     });
     this.frm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((val: any) => {
       console.log("FRM", val);

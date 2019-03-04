@@ -8,7 +8,7 @@ import {
   Validator,
   Validators
 } from "@angular/forms";
-import { BaseFrmComponent } from "../base-form/base-form.component";
+import { BaseFrmComponent } from "../base-frm/base-frm.component";
 
 @Component({
   selector: "app-address-frm",

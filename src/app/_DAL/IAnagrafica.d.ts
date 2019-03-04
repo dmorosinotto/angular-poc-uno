@@ -17,6 +17,7 @@ interface IAnagrafica {
     surname: string;
   };
   amici: [{ name: string; surname: string }];
+  data: string;
 }
 
 interface IContatto {
