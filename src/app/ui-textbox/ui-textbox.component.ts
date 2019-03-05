@@ -20,11 +20,12 @@ const IMPLEMENT_VALIDATE_LOGIC = null;
     </label>
   `,
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => UiTextboxComponent) },
-    { provide: NG_VALIDATORS, multi: true, useExisting: forwardRef(() => UiTextboxComponent) }
-  ]
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => UiTextboxComponent) }
+    //{ provide: NG_VALIDATORS, multi: true, useExisting: forwardRef(() => UiTextboxComponent) }
+  ],
+  styles: ["input.ng-invalid { border-left: 2px solid red }", "input.ng-valid { border: 1px solid green }"]
 })
-export class UiTextboxComponent implements OnInit, ControlValueAccessor, Validator {
+export class UiTextboxComponent implements OnInit, ControlValueAccessor {
   writeValue(val: any): void {
     //model -> view
     val && this.ctrl.setValue(val, { emitEvent: false });
@@ -41,9 +42,9 @@ export class UiTextboxComponent implements OnInit, ControlValueAccessor, Validat
     isDisabled ? this.ctrl.disable() : this.ctrl.enable();
   }
 
-  validate(control: AbstractControl): ValidationErrors {
-    return IMPLEMENT_VALIDATE_LOGIC;
-  }
+  //validate(control: AbstractControl): ValidationErrors {
+  //  return IMPLEMENT_VALIDATE_LOGIC;
+  //}
 
   @Input() label: string;
   ctrl = new FormControl(null);

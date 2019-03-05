@@ -6,7 +6,6 @@ type IKNOW_IT_IS_VALID_CAST = any;
 
 export abstract class BaseCtrl<M, V = M> extends BaseComponent implements ControlValueAccessor {
   abstract modelToView(modelValue: M): V;
-
   abstract viewToModel(viewValue: V): M;
 
   writeValue(val: M): void {

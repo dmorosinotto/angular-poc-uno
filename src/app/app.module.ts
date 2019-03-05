@@ -14,6 +14,8 @@ import { FormAttachNameDirective } from "./form-attach-name.directive";
 import { UiTextboxComponent } from "./ui-textbox/ui-textbox.component";
 import { RecapitoFrmComponent } from "./recapito-frm/recapito-frm.component";
 import { UiDateTimeComponent } from "./ui-datetime/ui-datetime.component";
+import { UiCodfiscComponent } from './ui-codfisc/ui-codfisc.component';
+import { AllErrorsPipe } from './all-errors.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { UiDateTimeComponent } from "./ui-datetime/ui-datetime.component";
     FormAttachNameDirective,
     UiTextboxComponent,
     RecapitoFrmComponent,
-    UiDateTimeComponent
+    UiDateTimeComponent,
+    UiCodfiscComponent,
+    AllErrorsPipe
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
