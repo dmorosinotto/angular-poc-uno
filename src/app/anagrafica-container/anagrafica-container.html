@@ -1,11 +1,13 @@
 <div [formGroup]="frm">
+  <app-friends-arr formControlName="friends"></app-friends-arr>
+  <hr />
+  <app-amicici-arr formArrayName="amicici"></app-amicici-arr>
+
   <app-nominativo-fld></app-nominativo-fld>
   <app-address-frm formControlName="residenza"></app-address-frm>
   <app-recapito-frm formControlName="spedizione" required></app-recapito-frm>
 
   <app-name-frm formControlName="referente"></app-name-frm>
-  <!--<app-amici-arr fo rmArrayName="amici"></app-amici-arr>-->
-  <app-amici-arr formControlName="XXX"></app-amici-arr>
   <div [formGroup]="frm.get('coniuge')">
     <label class="checkbox-label"><input type="checkbox" formControlName="sposato" /> poverino...</label>
     <app-nominativo-fld></app-nominativo-fld>
@@ -13,6 +15,7 @@
   <hr />
   <ui-datetime label="DATA UTC" formControlName="data"></ui-datetime>
   <ui-codfisc formControlName="cf"></ui-codfisc>
+  <app-xxx-frm formControlName="XXX"></app-xxx-frm>
 </div>
 <div class="button-sticky right">
   <button class="orange" (click)="Load()">LOAD Happiness</button>

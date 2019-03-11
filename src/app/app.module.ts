@@ -10,12 +10,17 @@ import { NominativoFldComponent } from "./nominativo-fld/nominativo-fld.componen
 import { AddressFrmComponent } from "./address-frm/address-frm.component";
 import { NameFrmComponent } from "./name-frm/name-frm.component";
 import { AmiciArrComponent } from "./amici-arr/amici-arr.component";
+import { FormAttachArrayNameDirective } from "./form-attach-array-name.directive";
 import { FormAttachNameDirective } from "./form-attach-name.directive";
 import { UiTextboxComponent } from "./ui-textbox/ui-textbox.component";
 import { RecapitoFrmComponent } from "./recapito-frm/recapito-frm.component";
 import { UiDateTimeComponent } from "./ui-datetime/ui-datetime.component";
-import { UiCodfiscComponent } from './ui-codfisc/ui-codfisc.component';
-import { AllErrorsPipe } from './all-errors.pipe';
+import { UiCodfiscComponent } from "./ui-codfisc/ui-codfisc.component";
+import { AllErrorsPipe } from "./all-errors.pipe";
+import { AmiciciArrComponent } from './amicici-arr/amicici-arr.component';
+import { FriendsArrComponent } from './friends-arr/friends-arr.component';
+import { IvanoFrmComponent } from './ivano-frm.component';
+import { XxxFrmComponent } from './xxx-frm/xxx-frm.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,11 +30,16 @@ import { AllErrorsPipe } from './all-errors.pipe';
     NameFrmComponent,
     AmiciArrComponent,
     FormAttachNameDirective,
+    FormAttachArrayNameDirective,
     UiTextboxComponent,
     RecapitoFrmComponent,
     UiDateTimeComponent,
     UiCodfiscComponent,
-    AllErrorsPipe
+    AllErrorsPipe,
+    AmiciciArrComponent,
+    FriendsArrComponent,
+    IvanoFrmComponent,
+    XxxFrmComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],

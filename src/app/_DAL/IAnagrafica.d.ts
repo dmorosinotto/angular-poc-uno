@@ -12,15 +12,24 @@ interface IAnagrafica {
   coniuge: INominativo & {
     sposato: boolean;
   };
-  referente: {
-    name: string;
-    surname: string;
-  };
-  amici: [{ name: string; surname: string }];
+  referente: IFullname;
+  amicici: IFullname[];
   data: string;
+  cf: string;
+  XXX: IXxx;
 }
 
 interface IContatto {
   tipo: "cell" | "tel";
   numero: string;
+}
+
+interface IFullname {
+  name: string;
+  surname: string;
+}
+
+interface IXxx {
+  amici: IFullname[];
+  quanti: number;
 }

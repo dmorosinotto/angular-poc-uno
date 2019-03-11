@@ -3,7 +3,7 @@ import { APIDataService } from "../_DAL/apidata.service";
 import { takeUntil, distinctUntilChanged } from "rxjs/operators";
 import { FormGroup, FormControl, FormArray, ValidationErrors } from "@angular/forms";
 import { BaseComponent } from "../base-destroy-cmp/base.component";
-
+import { delay, tap } from "rxjs/operators";
 @Component({
   selector: "app-anagrafica-container",
   templateUrl: "anagrafica-container.html",
@@ -24,7 +24,9 @@ export class AnagraficaContainerComponent extends BaseComponent implements OnIni
         sposato: new FormControl(false)
       }),
       data: new FormControl(null),
-      cf: new FormControl(null)
+      cf: new FormControl(null),
+      amicici: new FormArray([]),
+      friends: new FormControl(null)
     });
     this.frm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((val: any) => {
       console.log("FRM", val);
@@ -36,9 +38,12 @@ export class AnagraficaContainerComponent extends BaseComponent implements OnIni
   Load() {
     this.svc
       .getAnagrafica()
+      .pipe(
+        delay(0),
+        tap(data => (this.dto = data))
+      )
       //.pipe(takeUntil(this.destroy$))
       .subscribe(data => {
-        this.dto = data;
         this.frm.patchValue(data);
       });
   }
