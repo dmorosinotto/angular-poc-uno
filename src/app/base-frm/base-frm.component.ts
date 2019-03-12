@@ -1,13 +1,9 @@
 import { Self, OnInit } from "@angular/core";
 import { FormGroup, NgControl, ControlValueAccessor, ValidatorFn, ValidationErrors } from "@angular/forms";
 import { BaseComponent } from "../base-destroy-cmp/base.component";
-import { allErrors } from "../all-errors.pipe";
+import { aggregateErrors } from "../all-errors.pipe";
 type IKNOW_T_ISVALID_PARTIAL = any;
 export abstract class BaseFrmComponent<T> extends BaseComponent implements ControlValueAccessor, OnInit {
-  onTouch = () => {};
-  //onTouch: () => {};
-  // onChange: (_: any) => {};
-
   abstract initFrm(): FormGroupTyped<T>;
 
   frm: FormGroupTyped<T>;
@@ -30,11 +26,11 @@ export abstract class BaseFrmComponent<T> extends BaseComponent implements Contr
     });
   }
 
-  //onTouch: Function;
-  registerOnTouched(fn: any): void {
-    // ribellione any by Aly
+  onTouch = () => {};
+  registerOnTouched(fn: () => void): void {
     this.onTouch = fn;
   }
+
   setDisabledState?(isDisabled: boolean): void {
     console.log("set Disable -> ", isDisabled);
     if (isDisabled) this.frm.disable();
@@ -52,6 +48,6 @@ export abstract class BaseFrmComponent<T> extends BaseComponent implements Contr
 
   private allFrmErrors(_: AbstractControl): ValidationErrors {
     if (this.frm.valid) return null;
-    else return { [this.controlDir.path.join(".")]: allErrors(this.frm) };
+    else return { [this.controlDir.path.join(".")]: aggregateErrors(this.frm) };
   }
 }

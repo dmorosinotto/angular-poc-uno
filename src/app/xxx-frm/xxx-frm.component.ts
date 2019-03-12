@@ -30,7 +30,7 @@ import { takeUntil } from "rxjs/operators";
 export class XxxFrmComponent extends BaseFrmComponent<IXxx> {
   initFrm() {
     return new FormGroup({
-      amici: new FormControl([]),
+      amici: new FormControl([], this.atLeastTwo),
       quanti: new FormControl(0)
     }) as FormGroupTyped<IXxx>;
   }
@@ -41,5 +41,12 @@ export class XxxFrmComponent extends BaseFrmComponent<IXxx> {
     this.frm.controls.amici.valueChanges
       .pipe(takeUntil(this.destroy$))
       .subscribe(arr => this.frm.patchValue({ quanti: arr.length }));
+  }
+
+  private atLeastTwo(arr: FormArray): ValidationErrors {
+    console.log("VALIDATORE CUSTOM atLeastOne", arr && arr.value);
+    if (arr && arr.value && arr.value.length > 2) return null;
+    //VALIDO SE ITEMS > 1!
+    else return { atLeastTwo: "HO 2 AMICI" };
   }
 }

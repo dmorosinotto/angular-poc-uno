@@ -7,7 +7,7 @@ import { FormGroup, FormArray, ValidationErrors } from "@angular/forms";
 })
 export class AllErrorsPipe implements PipeTransform {
   transform(value: FormControl | FormGroup | FormArray): flatErr[] {
-    return allErrors(value);
+    return aggregateErrors(value);
   }
 }
 
@@ -21,19 +21,29 @@ interface IdealValidatorErrors {
 }
 */
 
-export function allErrors(ctrl: FormControl | FormGroup | FormArray, path: string = ""): flatErr[] {
+export function aggregateErrors(
+  ctrl: FormControl | FormGroup | FormArray | AbstractControl,
+  path: string = "" //BASE PATH TO TRAVERSE DATA STRUCTURE
+): flatErr[] {
   let errs: flatErr[] = [];
-  if (ctrl.valid) return [];
-  else {
-    if (ctrl.errors) errs.push({ path, err: ctrl.errors }); //ERRORI-VALIDATORI A LIVELLO DI FORM GROUP
-    if ("controls" in ctrl) {
-      // SONO SU FormGroup | FormArray -> VADO IN RICORSIONE
-      for (let key in ctrl.controls) {
-        if (ctrl.controls[key] && !ctrl.controls[key].valid)
-          //SE IL CHILD (Prop|Index) E' INVALIDO -> RICORSIONE
-          errs.push(...allErrors(ctrl.controls[key], (path ? path + "." : "") + key));
-      }
+  if (ctrl.errors) errs.push({ path, err: ctrl.errors }); //ERRORI-VALIDATORI A LIVELLO DI CTRL
+  if (ctrl instanceof FormArray) {
+    for (let idx = 0; idx < ctrl.length; idx++) {
+      if (!ctrl.at(idx).valid) errs.push(...aggregateErrors(ctrl.at(idx), (path ? path + "." : "") + idx));
     }
     return errs;
+  } else {
+    if (ctrl.valid) return [];
+    else {
+      if ("controls" in ctrl) {
+        // SONO SU FormGroup | FormArray -> VADO IN RICORSIONE
+        for (let key in ctrl.controls) {
+          if (ctrl.controls[key] && !ctrl.controls[key].valid)
+            //SE IL CHILD (Prop|Index) E' INVALIDO -> RICORSIONE
+            errs.push(...aggregateErrors(ctrl.controls[key], (path ? path + "." : "") + key));
+        }
+      }
+      return errs;
+    }
   }
 }

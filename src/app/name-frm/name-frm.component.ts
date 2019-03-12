@@ -1,4 +1,4 @@
-import { Component, OnInit, Self } from "@angular/core";
+import { Component, OnInit, Self, Host, Optional } from "@angular/core";
 import {
   FormGroup,
   FormControl,
@@ -9,7 +9,7 @@ import {
   Validators
 } from "@angular/forms";
 import { BaseFrmComponent } from "../base-frm/base-frm.component";
-import { allErrors } from "../all-errors.pipe";
+import { aggregateErrors } from "../all-errors.pipe";
 
 @Component({
   selector: "app-name-frm",
@@ -34,7 +34,7 @@ export class NameFrmComponent extends BaseFrmComponent<{ name: string; surname: 
     }) as FormGroupTyped<{ name: string; surname: string }>;
   }
 
-  constructor(@Self() public controlDir: NgControl) {
+  constructor(@Optional() @Self() public controlDir: NgControl) {
     super(controlDir);
   }
 }

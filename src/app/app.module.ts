@@ -17,10 +17,12 @@ import { RecapitoFrmComponent } from "./recapito-frm/recapito-frm.component";
 import { UiDateTimeComponent } from "./ui-datetime/ui-datetime.component";
 import { UiCodfiscComponent } from "./ui-codfisc/ui-codfisc.component";
 import { AllErrorsPipe } from "./all-errors.pipe";
-import { AmiciciArrComponent } from './amicici-arr/amicici-arr.component';
-import { FriendsArrComponent } from './friends-arr/friends-arr.component';
-import { IvanoFrmComponent } from './ivano-frm.component';
-import { XxxFrmComponent } from './xxx-frm/xxx-frm.component';
+import { AmiciciArrComponent } from "./amicici-arr/amicici-arr.component";
+import { FriendsArrComponent } from "./friends-arr/friends-arr.component";
+import { IvanoFrmComponent } from "./ivano-frm.component";
+import { XxxFrmComponent } from "./xxx-frm/xxx-frm.component";
+import { FormArrayComponent } from "./form-array/form-array.component";
+import { BaseArrComponent } from "./base-arr/base-arr.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +41,10 @@ import { XxxFrmComponent } from './xxx-frm/xxx-frm.component';
     AmiciciArrComponent,
     FriendsArrComponent,
     IvanoFrmComponent,
-    XxxFrmComponent
+    XxxFrmComponent,
+    FormArrayComponent
   ],
+  entryComponents: [NameFrmComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
