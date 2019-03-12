@@ -1,23 +1,6 @@
-import { Component, OnInit, Self, Injector, forwardRef, SkipSelf } from "@angular/core";
-import {
-  FormArray,
-  FormControl,
-  NgControl,
-  ControlValueAccessor,
-  AbstractControl,
-  Validator,
-  Validators,
-  FormGroup,
-  ControlContainer,
-  NG_VALUE_ACCESSOR,
-  ValidationErrors,
-  Form
-} from "@angular/forms";
-import { AddressFrmComponent } from "../address-frm/address-frm.component";
-import { NameFrmComponent } from "../name-frm/name-frm.component";
-import { aggregateErrors } from "../all-errors.pipe";
-import { Type } from "@angular/core";
-import { BaseArrComponent } from "../base-arr/base-arr.component";
+import { Component } from "@angular/core";
+import { FormArray, NgControl, ValidationErrors } from "@angular/forms";
+import { BaseArrComponent } from "@base/base-arr.component";
 
 @Component({
   selector: "app-friends-arr",
@@ -31,7 +14,7 @@ import { BaseArrComponent } from "../base-arr/base-arr.component";
       <h4>FRIENDS ARRAY</h4>
       <form-array [arr]="arr" [itemTpl]="item"></form-array>
 
-      <!-- TODO: Structural Directive
+      <!-- TODO: Structural Directive 
       <ng-container *forEach="let ctrl in arr; idx as i">
         <h3>AMICO N.{{ i }}</h3>
         <app-name-frm [formControl]="ctrl"></app-name-frm>

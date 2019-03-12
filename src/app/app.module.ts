@@ -3,30 +3,29 @@ import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { AnagraficaContainerComponent } from "./anagrafica-container/anagrafica-container.component";
+import { AnagraficaPage } from "./anagrafica/anagrafica-page/anagrafica.page";
 import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
-import { NominativoFldComponent } from "./nominativo-fld/nominativo-fld.component";
-import { AddressFrmComponent } from "./address-frm/address-frm.component";
-import { NameFrmComponent } from "./name-frm/name-frm.component";
-import { AmiciArrComponent } from "./amici-arr/amici-arr.component";
-import { FormAttachArrayNameDirective } from "./form-attach-array-name.directive";
-import { FormAttachNameDirective } from "./form-attach-name.directive";
-import { UiTextboxComponent } from "./ui-textbox/ui-textbox.component";
-import { RecapitoFrmComponent } from "./recapito-frm/recapito-frm.component";
-import { UiDateTimeComponent } from "./ui-datetime/ui-datetime.component";
-import { UiCodfiscComponent } from "./ui-codfisc/ui-codfisc.component";
-import { AllErrorsPipe } from "./all-errors.pipe";
-import { AmiciciArrComponent } from "./amicici-arr/amicici-arr.component";
-import { FriendsArrComponent } from "./friends-arr/friends-arr.component";
-import { IvanoFrmComponent } from "./ivano-frm.component";
-import { XxxFrmComponent } from "./xxx-frm/xxx-frm.component";
-import { FormArrayComponent } from "./form-array/form-array.component";
-import { BaseArrComponent } from "./base-arr/base-arr.component";
+import { NominativoFldComponent } from "./anagrafica/nominativo-fld.component";
+import { AddressFrmComponent } from "./anagrafica/common/address-frm.component";
+import { NameFrmComponent } from "./anagrafica/common/name-frm.component";
+import { AmiciArrComponent } from "./_WIP/amici-arr.component";
+import { FormAttachArrayNameDirective } from "./_WIP/form-attach-array-name.directive";
+import { FormAttachNameDirective } from "./base/form-attach-name.directive";
+import { UiTextboxComponent } from "./toolbox/ui-textbox.component";
+import { RecapitoFrmComponent } from "./anagrafica/recapito-frm.component";
+import { UiDateTimeComponent } from "./toolbox/ui-datetime.component";
+import { UiCodfiscComponent } from "./shared/ui-codfisc.component";
+import { AllErrorsPipe } from "./base/all-errors.pipe";
+import { AmiciciArrComponent } from "./anagrafica/amicici-arr.component";
+import { FriendsArrComponent } from "./anagrafica/common/friends-arr.component";
+import { IvanoFrmComponent } from "./_WIP/ivano-frm.component";
+import { XxxFrmComponent } from "./anagrafica/xxx-frm.component";
+import { FormArrayComponent } from "./base/form-array.component";
 @NgModule({
   declarations: [
     AppComponent,
-    AnagraficaContainerComponent,
+    AnagraficaPage,
     NominativoFldComponent,
     AddressFrmComponent,
     NameFrmComponent,
@@ -48,6 +47,5 @@ import { BaseArrComponent } from "./base-arr/base-arr.component";
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
-  //entryComponents: [NameFrmComponent]
 })
 export class AppModule {}

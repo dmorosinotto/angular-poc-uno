@@ -1,7 +1,7 @@
 import { OnInit, Self } from "@angular/core";
-import { BaseComponent } from "../base-destroy-cmp/base.component";
+import { BaseComponent } from "./base.component";
 import { NgControl, FormControl, ControlValueAccessor, ValidationErrors } from "@angular/forms";
-import { aggregateErrors } from "../all-errors.pipe";
+import { aggregateErrors } from "./all-errors.pipe";
 
 export abstract class BaseArrComponent<T> extends BaseComponent implements ControlValueAccessor, OnInit {
   abstract initArr(): FormArrayTyped<T>;

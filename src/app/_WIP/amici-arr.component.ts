@@ -10,8 +10,8 @@ import {
   FormGroup,
   ControlContainer
 } from "@angular/forms";
-import { AddressFrmComponent } from "../address-frm/address-frm.component";
-import { NameFrmComponent } from "../name-frm/name-frm.component";
+import { AddressFrmComponent } from "../anagrafica/common/address-frm.component";
+import { NameFrmComponent } from "../anagrafica/common/name-frm.component";
 
 @Component({
   selector: "app-amici-arr",

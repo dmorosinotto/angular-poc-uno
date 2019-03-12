@@ -9,7 +9,7 @@ import {
   Validators,
   ValidationErrors
 } from "@angular/forms";
-import { BaseFrmComponent } from "../base-frm/base-frm.component";
+import { BaseFrmComponent } from "../base/base-frm.component";
 import { takeUntil } from "rxjs/operators";
 
 @Component({

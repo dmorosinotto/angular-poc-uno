@@ -11,8 +11,8 @@ import {
   ControlContainer,
   NG_VALUE_ACCESSOR
 } from "@angular/forms";
-import { AddressFrmComponent } from "../address-frm/address-frm.component";
-import { NameFrmComponent } from "../name-frm/name-frm.component";
+import { AddressFrmComponent } from "./common/address-frm.component";
+import { NameFrmComponent } from "./common/name-frm.component";
 
 @Component({
   selector: "app-amicici-arr",

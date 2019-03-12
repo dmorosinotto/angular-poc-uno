@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { APIDataService } from "../_DAL/apidata.service";
+import { APIDataService } from "../../_DAL/apidata.service";
 import { takeUntil, distinctUntilChanged } from "rxjs/operators";
 import { FormGroup, FormControl, FormArray, ValidationErrors } from "@angular/forms";
-import { BaseComponent } from "../base-destroy-cmp/base.component";
+import { BaseComponent } from "@base/base.component";
 import { delay, tap } from "rxjs/operators";
 @Component({
-  selector: "app-anagrafica-container",
-  templateUrl: "anagrafica-container.html",
+  //selector: "app-anagrafica-page",
+  templateUrl: "anagrafica.page.html",
   styles: ["*.ng-invalid {border: 2px red solid; padding-left: 5px}", "*.ng-valid {border: 2px green solid}"]
 })
-export class AnagraficaContainerComponent extends BaseComponent implements OnInit {
+export class AnagraficaPage extends BaseComponent implements OnInit {
   dto: IAnagrafica;
   frm: FormGroup;
   constructor(private svc: APIDataService) {

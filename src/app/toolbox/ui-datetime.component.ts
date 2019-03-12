@@ -8,7 +8,7 @@ import {
   ValidationErrors,
   AbstractControl
 } from "@angular/forms";
-import { BaseCtrl } from "../base-ctrl/base-ctrl.component";
+import { BaseCtrl } from "../base/base-ctrl.component";
 
 const IMPLEMENT_VALIDATE_LOGIC = null;
 

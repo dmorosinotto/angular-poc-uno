@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AnagraficaContainerComponent } from "./anagrafica-container/anagrafica-container.component";
+import { AnagraficaPage } from "./anagrafica/anagrafica-page/anagrafica.page";
 
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/anagrafica" },
-  { path: "anagrafica", component: AnagraficaContainerComponent }
+  { path: "anagrafica", component: AnagraficaPage }
 ];
 
 @NgModule({

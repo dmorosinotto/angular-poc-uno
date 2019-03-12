@@ -1,15 +1,6 @@
-import { Component, OnInit, Self, Host, Optional } from "@angular/core";
-import {
-  FormGroup,
-  FormControl,
-  NgControl,
-  ControlValueAccessor,
-  AbstractControl,
-  Validator,
-  Validators
-} from "@angular/forms";
-import { BaseFrmComponent } from "../base-frm/base-frm.component";
-import { aggregateErrors } from "../all-errors.pipe";
+import { Component, Self, Optional } from "@angular/core";
+import { FormGroup, FormControl, NgControl, Validators } from "@angular/forms";
+import { BaseFrmComponent } from "@base/base-frm.component";
 
 @Component({
   selector: "app-name-frm",

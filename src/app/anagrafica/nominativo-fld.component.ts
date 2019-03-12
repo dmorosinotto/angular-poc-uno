@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, forwardRef } from "@angular/core";
 import { ControlContainer } from "@angular/forms";
-import { BaseComponent } from "../base-destroy-cmp/base.component";
+import { BaseComponent } from "@base/base.component";
 
 @Component({
   selector: "app-nominativo-fld",

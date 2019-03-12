@@ -1,4 +1,4 @@
-import { BaseComponent } from "../base-destroy-cmp/base.component";
+import { BaseComponent } from "./base.component";
 import { ControlValueAccessor, FormControl, ValidationErrors } from "@angular/forms";
 import { map } from "rxjs/operators";
 

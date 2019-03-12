@@ -1,7 +1,7 @@
 import { Self, OnInit } from "@angular/core";
 import { FormGroup, NgControl, ControlValueAccessor, ValidatorFn, ValidationErrors } from "@angular/forms";
-import { BaseComponent } from "../base-destroy-cmp/base.component";
-import { aggregateErrors } from "../all-errors.pipe";
+import { BaseComponent } from "./base.component";
+import { aggregateErrors } from "./all-errors.pipe";
 type IKNOW_T_ISVALID_PARTIAL = any;
 export abstract class BaseFrmComponent<T> extends BaseComponent implements ControlValueAccessor, OnInit {
   abstract initFrm(): FormGroupTyped<T>;
