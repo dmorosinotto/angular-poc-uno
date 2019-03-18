@@ -1,0 +1,14 @@
+@TS("IAnagrafica")
+@C#("Models.Person.Anagrafica")
+IAnagrafica
+    name -> string
+    cognome -> string 
+    nciv -> string|number
+    recapito ->[IRecapito]
+
+@TS("IRecapito")
+@C#("Models.Person.Anagrafica")    
+IRecapito
+    citta -> string
+    cap -> number
+

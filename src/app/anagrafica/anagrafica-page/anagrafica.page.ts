@@ -30,16 +30,16 @@ export class AnagraficaPage extends BaseComponent implements OnInit {
     });
     this.frm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((val: any) => {
       console.log("FRM", val);
-      Promise.resolve().then(() => (this.frmValue = val));
+      //Promise.resolve().then(() => (this.frmValue = val));
     });
   }
 
-  frmValue;
+  //frmValue;
   Load() {
     this.svc
       .getAnagrafica()
       .pipe(
-        delay(0),
+        //delay(0),
         tap(data => (this.dto = data))
       )
       //.pipe(takeUntil(this.destroy$))

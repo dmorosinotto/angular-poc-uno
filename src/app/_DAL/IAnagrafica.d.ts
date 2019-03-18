@@ -1,4 +1,9 @@
 type IRecapito = import("./IRecapito").IRecapito;
+// type CFString = string;
+type ISOString = string | number;
+type ITipoContatto = "cell" | "tel";
+type MaybeStrings = string | string[] | null | undefined;
+type Nullable<T> = T | null | undefined;
 
 interface IAnagrafica {
   residenza: IAddress;
@@ -14,13 +19,14 @@ interface IAnagrafica {
   };
   referente: IFullname;
   amicici: IFullname[];
-  data: string;
+  data: ISOString;
   cf: string;
   XXX: IXxx;
+  friends: IFullname[];
 }
 
 interface IContatto {
-  tipo: "cell" | "tel";
+  tipo: ITipoContatto;
   numero: string;
 }
 

@@ -19,7 +19,7 @@
 </div>
 <div class="button-sticky right">
   <button class="orange" (click)="Load()">LOAD Happiness</button>
-  <button class="green" (click)="Save()">Send pods to the moon</button>
+  <button [disabled]="frm.invalid" class="green" (click)="Save()">Send pods to the moon</button>
   <hr />
   <div style="position: absolute; top:200px">
     PATH:<input #path (blur)="refresh()" (keyup.enter)="refresh()" />
@@ -43,7 +43,7 @@
 VALID={{ frm.valid }} 
 - ERRORS={{ frm | allerr | json }}</pre
     >
-    <pre>{{ frmValue | json }}</pre>
+    <pre>{{ frm?.value | json }}</pre>
     <h5>Dto</h5>
     <pre>
       DTO={{ dto | json }}

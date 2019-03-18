@@ -43,9 +43,9 @@ export class FriendsArrComponent extends BaseArrComponent<IFullname> {
     console.log("FRIENDS CTRLDIR", controlDir);
   }
 
-  private atLeastOne(arr: FormArray): ValidationErrors {
+  private atLeastOne(arr: FormArray): ValidationErrors | null {
     console.log("VALIDATORE CUSTOM atLeastOne", arr && arr.value);
-    if (arr && arr.value && arr.value.length > 1) return null;
+    if (arr && arr.value && arr.value.length >= 1) return null;
     //VALIDO SE ITEMS > 1!
     else return { atLeastOne: "SPERO TU ABBIA ALMENO UN AMICO" };
   }

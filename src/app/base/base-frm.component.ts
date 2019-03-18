@@ -2,6 +2,7 @@ import { Self, OnInit } from "@angular/core";
 import { FormGroup, NgControl, ControlValueAccessor, ValidatorFn, ValidationErrors } from "@angular/forms";
 import { BaseComponent } from "./base.component";
 import { aggregateErrors } from "./all-errors.pipe";
+import { takeUntil, take } from "rxjs/operators";
 type IKNOW_T_ISVALID_PARTIAL = any;
 export abstract class BaseFrmComponent<T> extends BaseComponent implements ControlValueAccessor, OnInit {
   abstract initFrm(): FormGroupTyped<T>;
@@ -20,7 +21,7 @@ export abstract class BaseFrmComponent<T> extends BaseComponent implements Contr
 
   registerOnChange(fnChange: (val: T) => void): void {
     // console.log("ADESSO", fnChange);
-    this.frm.valueChanges.subscribe(fromView => {
+    this.frm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(fromView => {
       // console.log("valFromView", fromView, " call fnChange view -> model");
       fnChange(fromView);
     });
@@ -29,6 +30,7 @@ export abstract class BaseFrmComponent<T> extends BaseComponent implements Contr
   onTouch = () => {};
   registerOnTouched(fn: () => void): void {
     this.onTouch = fn;
+    this.frm.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(_ => this.onTouch());
   }
 
   setDisabledState?(isDisabled: boolean): void {
