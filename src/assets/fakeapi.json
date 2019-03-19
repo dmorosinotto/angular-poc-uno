@@ -36,7 +36,7 @@
     "surname": "X"
   },
   "XXX": {
-    "amici": [{ "name": "Pinco", "surname": "Pallino" }, { "name": "Pippo", "surname": "Pluto" }]
+    "amici": [{ "name": "Qui", "surname": "Pallino" }, { "name": "Quo", "surname": "Pluto" }]
   },
   "amicici": [{ "name": "Pinco", "surname": "Pallino" }, { "name": "Pippo", "surname": "Pluto" }],
   "friends": [{ "name": "Qui", "surname": "1" }, { "name": "Quo", "surname": "2" }, { "name": "Qua", "surname": "3" }],

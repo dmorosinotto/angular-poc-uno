@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { APIDataService } from "../../_DAL/apidata.service";
-import { takeUntil, distinctUntilChanged } from "rxjs/operators";
+import { takeUntil, distinctUntilChanged, map } from "rxjs/operators";
 import { FormGroup, FormControl, FormArray, ValidationErrors } from "@angular/forms";
 import { BaseComponent } from "@base/base.component";
 import { delay, tap } from "rxjs/operators";
@@ -23,7 +23,8 @@ export class AnagraficaPage extends BaseComponent implements OnInit {
       //amici: new FormArray([])
       XXX: new FormControl(null),
       coniuge: new FormGroup({
-        sposato: new FormControl(false)
+        sposato: new FormControl(false),
+        codfisc: new FormControl("")
       }),
       data: new FormControl(null),
       cf: new FormControl(null),
@@ -42,10 +43,25 @@ export class AnagraficaPage extends BaseComponent implements OnInit {
       .getAnagrafica()
       .pipe(
         //delay(0),
-        tap(data => (this.dto = data))
+        tap(data => (this.dto = data)),
+        map(data => {
+          //LOGICA RIMAPPATURA DTO -> struttura x Form
+          const lookupData = (arr: IFullname[], name: string) => {
+            var found = arr.find(x => x.name === name);
+            console.log("FOUND", found, name);
+            return (found && found.surname) || "NOT FOUND";
+          };
+          data.friends = data.friends.map(amico => {
+            amico.cf = lookupData(data.XXX.amici, amico.name);
+            return amico;
+          });
+          data.coniuge.codfisc = lookupData(data.friends, data.coniuge.nome);
+          return data;
+        })
       )
       //.pipe(takeUntil(this.destroy$))
       .subscribe(data => {
+        console.warn("DOPO LA MAP", data);
         this.frm.patchValue(data);
       });
   }

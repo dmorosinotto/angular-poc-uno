@@ -12,6 +12,7 @@ import { LAYOUT_TOKEN, Layouts } from "@base/LayoutToken";
       </h4>
       <ui-textbox label="Name" formControlName="name"></ui-textbox>
       <ui-textbox label="Surname" formControlName="surname"></ui-textbox>
+      <ui-textbox label="cf" formControlName="cf"></ui-textbox>
     </fieldset>
     <!-- 
     VAL={{ frm.valid }} ERR={{ frm | allerr | json }}
@@ -30,7 +31,8 @@ export class NameFrmComponent extends BaseFrmComponent<{ name: string; surname: 
   initFrm() {
     return new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
-      surname: new FormControl("")
+      surname: new FormControl(""),
+      cf: new FormControl("")
     }) as FormGroupTyped<{ name: string; surname: string }>;
   }
 

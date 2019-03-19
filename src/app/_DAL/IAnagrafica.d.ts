@@ -16,13 +16,14 @@ interface IAnagrafica {
 
   coniuge: INominativo & {
     sposato: boolean;
+    codfisc?: string;
   };
   referente: IFullname;
   amicici: IFullname[];
   data: ISOString;
   cf: string;
   XXX: IXxx;
-  friends: IFullname[];
+  friends: Array<IFullname & { cf?: string }>;
 }
 
 interface IContatto {
