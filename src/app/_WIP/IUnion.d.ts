@@ -25,7 +25,7 @@ interface ContattoInGriglia extends ContattoCommonInfo {
 }
 
 type Contatto = ContattoInColonna | ContattoConFoto | ContattoConOrdinamento | ContattoInGriglia;
-
+/*
 function xx(c: Contatto) {
   c.layout;
   if (c.layout == "fotomodello") {
@@ -34,3 +34,4 @@ function xx(c: Contatto) {
     x = c;
   }
 }
+*/
