@@ -4,10 +4,12 @@ import { takeUntil, distinctUntilChanged } from "rxjs/operators";
 import { FormGroup, FormControl, FormArray, ValidationErrors } from "@angular/forms";
 import { BaseComponent } from "@base/base.component";
 import { delay, tap } from "rxjs/operators";
+import { LAYOUT_TOKEN, ILayoutGrid } from "@base/LayoutToken";
 @Component({
   //selector: "app-anagrafica-page",
   templateUrl: "anagrafica.page.html",
-  styles: ["*.ng-invalid {border: 2px red solid; padding-left: 5px}", "*.ng-valid {border: 2px green solid}"]
+  styles: ["*.ng-invalid {border: 2px red solid; padding-left: 5px}", "*.ng-valid {border: 2px green solid}"],
+  providers: [{ provide: LAYOUT_TOKEN, useValue: { type: "GRID", columns: 3 } as ILayoutGrid }]
 })
 export class AnagraficaPage extends BaseComponent implements OnInit {
   dto: IAnagrafica;

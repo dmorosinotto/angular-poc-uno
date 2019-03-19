@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormArray, NgControl, ValidationErrors } from "@angular/forms";
 import { BaseArrComponent } from "@base/base-arr.component";
+import { LAYOUT_TOKEN, ILayoutWizzard } from "@base/LayoutToken";
 
 @Component({
   selector: "app-friends-arr",
@@ -8,8 +9,8 @@ import { BaseArrComponent } from "@base/base-arr.component";
     <fieldset ngClass="{'ng-invalid': arr.invalid; 'ng-valid': arr.valid}">
       <ng-template #item let-ctrl let-i="idx">
         <h3>AMICO N.{{ i }}</h3>
-        <app-name-frm [formControl]="ctrl"></app-name-frm
-      ></ng-template>
+        <app-name-frm [formControl]="ctrl"></app-name-frm>
+      </ng-template>
 
       <h4>FRIENDS ARRAY</h4>
       <form-array [arr]="arr" [itemTpl]="item"></form-array>
@@ -31,7 +32,8 @@ import { BaseArrComponent } from "@base/base-arr.component";
   styles: [
     "*.ng-invalid { border-left: 4px solid blue; padding-left:10px }",
     "*.ng-valid { border: 4px solid yellow; padding-left:10px }"
-  ]
+  ],
+  providers: [{ provide: LAYOUT_TOKEN, useValue: { type: "WIZZARD" } as ILayoutWizzard }]
 })
 export class FriendsArrComponent extends BaseArrComponent<IFullname> {
   initArr(): FormArrayTyped<IFullname> {
