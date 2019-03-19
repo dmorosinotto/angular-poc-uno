@@ -38,6 +38,9 @@ button {
   }
   &.green {
     background: #009688;
+    &[disabled] {
+      background: #767676;
+    }
   }
   &.brown {
     background: #795548;

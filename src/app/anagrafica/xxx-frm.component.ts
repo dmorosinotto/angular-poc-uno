@@ -36,8 +36,8 @@ export class XxxFrmComponent extends BaseFrmComponent<IXxx> {
 
   private atLeastTwo(arr: FormArray): ValidationErrors | null {
     console.log("VALIDATORE CUSTOM atLeastOne", arr && arr.value);
-    if (arr && arr.value && arr.value.length > 2) return null;
+    if (arr && arr.value && arr.value.length == 2) return null;
     //VALIDO SE ITEMS > 1!
-    else return { atLeastTwo: "HO 2 AMICI" };
+    else return { atLeastTwo: "NON HAI 2 AMICI" };
   }
 }

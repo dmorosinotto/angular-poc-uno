@@ -7,10 +7,10 @@ import { BaseFrmComponent } from "@base/base-frm.component";
   template: `
     <fieldset [formGroup]="frm">
       <h4>Fieldset indirizzo</h4>
-      <label>Via</label><input formControlName="via" (keyup.enter)="onTouch()" /> <label>CAP</label
+      <label>Via</label><input formControlName="via" (keyup.enter)="onEnter($event.target, 'via')" /> <label>CAP</label
       ><input type="number" formControlName="cap" /> <label>Città</label
       ><input type="text" formControlName="citta" required /> <label>Prov</label
-      ><input formControlName="prov" (keyup.enter)="onTouch()" />
+      ><input formControlName="prov" (keyup.enter)="onEnter($event.target, 'prov')" />
     </fieldset>
   `,
   styles: ["input.ng-invalid { border: 2px red solid }"]
@@ -30,6 +30,15 @@ export class AddressFrmComponent extends BaseFrmComponent<IAddress> {
 
   constructor(@Self() public controlDir: NgControl) {
     super(controlDir);
+  }
+
+  onEnter(el: HTMLInputElement, fldName: keyof IAddress) {
+    //alert("ENTER");
+    console.log("ENTER on field", fldName, el);
+    //this.frm.controls[fldName].updateValueAndValidity();
+    //console.log("UPDVAL", this.frm.controls[fldName]);
+    el.blur(); //SUPER TRICKY BUT NEEDED TO INVOKE ANGULAR INTERNAL LOGIC TO PROPAGATE updateOn:'blur'
+    this.onTouch();
   }
 
   validProv(ctrl: AbstractControlTyped<string>): ValidationErrors | null {
