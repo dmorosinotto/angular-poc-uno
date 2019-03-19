@@ -34,7 +34,7 @@ export class XxxFrmComponent extends BaseFrmComponent<IXxx> {
       .subscribe(arr => this.frm.patchValue({ quanti: arr.length }));
   }
 
-  private atLeastTwo(arr: FormArray): ValidationErrors {
+  private atLeastTwo(arr: FormArray): ValidationErrors | null {
     console.log("VALIDATORE CUSTOM atLeastOne", arr && arr.value);
     if (arr && arr.value && arr.value.length > 2) return null;
     //VALIDO SE ITEMS > 1!

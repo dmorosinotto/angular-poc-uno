@@ -32,7 +32,7 @@ export class AddressFrmComponent extends BaseFrmComponent<IAddress> {
     super(controlDir);
   }
 
-  validProv(ctrl: AbstractControlTyped<string>): ValidationErrors {
+  validProv(ctrl: AbstractControlTyped<string>): ValidationErrors | null {
     if (ctrl && ctrl.value && ctrl.value.length == 2) return null;
     return { prov: false }; //INVALID PROV
   }

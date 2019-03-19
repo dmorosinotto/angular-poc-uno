@@ -40,7 +40,7 @@ export class UiDateTimeComponent extends BaseCtrl<string, Date> implements Valid
     return new Date(viewValue).toISOString(); //Riconverto da LOCAL string -> UTC (solo perchè type="datetime-local" mi da stringhe)
   }
 
-  validate(control: AbstractControl): ValidationErrors {
+  validate(control: AbstractControl): ValidationErrors | null {
     return IMPLEMENT_VALIDATE_LOGIC;
   }
 }

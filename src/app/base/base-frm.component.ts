@@ -40,16 +40,18 @@ export abstract class BaseFrmComponent<T> extends BaseComponent implements Contr
   }
 
   ngOnInit(): void {
-    const currValidators = this.controlDir.control.validator;
-    if (currValidators) {
-      this.controlDir.control.setValidators([currValidators, this.allFrmErrors.bind(this)]);
-    } else {
-      this.controlDir.control.setValidators(this.allFrmErrors.bind(this));
+    const ctrl /*:FormGroup*/ = this.controlDir.control;
+    if (ctrl) {
+      if (ctrl.validator) {
+        ctrl.setValidators([ctrl.validator, this.allFrmErrors.bind(this)]);
+      } else {
+        ctrl.setValidators(this.allFrmErrors.bind(this));
+      }
     }
   }
 
-  private allFrmErrors(_: AbstractControl): ValidationErrors {
+  private allFrmErrors(_: AbstractControl): ValidationErrors | null {
     if (this.frm.valid) return null;
-    else return { [this.controlDir.path.join(".")]: aggregateErrors(this.frm) };
+    else return { [(this.controlDir.path || []).join(".")]: aggregateErrors(this.frm) };
   }
 }

@@ -56,7 +56,7 @@ export class AnagraficaPage extends BaseComponent implements OnInit {
     console.log("REFRESH");
   }
 
-  validRecapito(ctrl: AbstractControl): ValidationErrors {
+  validRecapito(ctrl: AbstractControl): ValidationErrors | null {
     if (ctrl && ctrl.value && ctrl.value.uguaglio) return null;
     else return { recapito: "INVALIDO PERCHE DEVE ESSERE UGUAGLIO" };
   }

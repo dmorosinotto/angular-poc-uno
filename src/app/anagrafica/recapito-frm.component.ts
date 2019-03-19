@@ -35,7 +35,7 @@ export class RecapitoFrmComponent extends BaseFrmComponent<IRecapito> {
       .valueChanges.pipe(takeUntil(this.destroy$))
       .subscribe(u => {
         console.log("????CHANGE UGUAGLIO", u);
-        u ? this.frm.get("recapito").disable() : this.frm.get("recapito").enable();
+        u ? this.frm.get("recapito")!.disable() : this.frm.get("recapito")!.enable();
       });
   }
   writeValue(val: IRecapito) {

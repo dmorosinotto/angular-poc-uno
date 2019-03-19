@@ -16,18 +16,20 @@ export abstract class BaseArrComponent<T> extends BaseComponent implements Contr
   ngOnInit(): void {
     //console.info("(onInit) IS ARRAY ctrlDir", this.controlDir);
     //this.arr = this.controlDir.control as FormArray;
-    const currValidators = this.controlDir.control.validator;
-    if (currValidators) {
-      this.controlDir.control.setValidators([currValidators, this.allArrErrors.bind(this)]);
-    } else {
-      this.controlDir.control.setValidators(this.allArrErrors.bind(this));
+    const ctrl /*:FormArray*/ = this.controlDir.control;
+    if (ctrl) {
+      if (ctrl.validator) {
+        ctrl.setValidators([ctrl.validator, this.allArrErrors.bind(this)]);
+      } else {
+        ctrl.setValidators(this.allArrErrors.bind(this));
+      }
     }
   }
 
-  private allArrErrors(_: AbstractControl): ValidationErrors {
+  private allArrErrors(_: AbstractControl): ValidationErrors | null {
     console.warn("??? VALIDATORE INTERNO ARR", _.value, this.arr.valid, aggregateErrors(this.arr));
     if (this.arr.valid) return null;
-    else return { [this.controlDir.path.join(".")]: aggregateErrors(this.arr) };
+    else return { [(this.controlDir.path || []).join(".")]: aggregateErrors(this.arr) };
   }
 
   writeValue(val: T[]): void {

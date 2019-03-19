@@ -43,7 +43,7 @@ export class UiCodfiscComponent extends BaseCtrl<string> implements Validator {
     return (viewValue || "").toUpperCase();
   }
 
-  validate(control: AbstractControlTyped<string>): ValidationErrors {
+  validate(control: AbstractControlTyped<string>): ValidationErrors | null {
     console.log("CF VALIDATE", control.value);
     if (!control.value || control.value.length != 16) return { codfisc: "INVALID LENGHT CODICE FISCALE" };
     if (control.value.match(/^[A-Z]{6}\d{2}[A-Z]\d{2}[A-Z]\d{3}[A-Z]$/g)) return null;
