@@ -1,16 +1,116 @@
-/* You can add global styles to this file, and also import other style files */
-html,
-body {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-}
-body {
-  max-width: 520px;
-  margin: 0 auto;
+@mixin scrollbar {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
 }
 
-h4 {
-  margin-top: 2px;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  @include scrollbar();
+}
+
+nav.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #880e4f;
+  color: white;
+  z-index: 1000;
+  .title {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 0 16px;
+  }
+  .menu {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    ul,
+    li {
+      list-style-type: none;
+    }
+    ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      padding: 0 8px;
+      border-left: 1px solid #bc477b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease-in-out;
+      &:hover,
+      &.active {
+        transition: all 0.3s ease-in-out;
+        background: #bc477b;
+      }
+    }
+  }
+}
+
+.wrapper-content {
+  height: 100vh;
+  background: #cfd8dc;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .main-content {
+    margin-top: 50px;
+    padding: 16px;
+    height: calc(100% - 128px);
+    overflow: auto;
+  }
+}
+
+.sheet {
+  margin: 0 auto;
+  width: 80%;
+  background: white;
+  box-shadow: 0px 3px 12px -4px rgba(0, 0, 0, 0.3);
+  padding: 8px 16px 16px;
+}
+
+//
+
+.d-form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25%;
+}
+
+.debug {
+  position: fixed;
+  top: 50px;
+  bottom: 50px;
+  left: 0;
+  width: 25%;
+  background: white;
+  overflow: auto;
+  h5 {
+    margin: 6px;
+  }
+  .dash {
+    overflow: hidden;
+  }
 }
 
 pre {
@@ -30,28 +130,27 @@ button {
   font-size: 16px;
   font-weight: bold;
   border: 1px solid transparent;
-  border-radius: 6px;
-  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  &.orange {
-    background: #ff5722;
+  &.primary {
+    background: #560027;
+  }
+  &.error {
+    background: #f44336;
   }
   &.green {
     background: #009688;
     &[disabled] {
-      background: #767676;
+      background: #34515e;
+      cursor: not-allowed;
     }
-  }
-  &.brown {
-    background: #795548;
   }
 }
 
 fieldset {
   border: none;
-  background: #eaeaea;
-  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
+  background: white;
+  box-shadow: 0px 3px 12px -4px rgba(0, 0, 0, 0.5);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -62,15 +161,39 @@ input {
   margin-bottom: 0.5rem;
   width: calc(100% - 16px);
   min-height: 30px;
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: 0;
+  padding: 2px;
   border: 1px solid #ccc;
   color: #767676;
   font-style: italic;
   font-size: 1.1rem;
-  &[type="checkbox"] {
+  &[type='checkbox'] {
     min-height: auto;
     width: auto;
+  }
+  &.ng-valid {
+    border-left: 3px solid #009688;
+  }
+  &.ng-invalid {
+    border-left: 3px solid #f44336;
+  }
+}
+
+select {
+  margin-bottom: 0.5rem;
+  width: calc(100% - 16px);
+  min-height: 30px;
+  border-radius: 0;
+  padding: 2px;
+  border: 1px solid #ccc;
+  color: #767676;
+  font-style: italic;
+  font-size: 1.1rem;
+  &.ng-valid {
+    border-left: 3px solid #009688;
+  }
+  &.ng-invalid {
+    border-left: 3px solid #f44336;
   }
 }
 
@@ -89,25 +212,17 @@ label {
 
 .button-sticky {
   position: fixed;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  padding-top: 16px;
   bottom: 0;
-  align-items: flex-start;
-  &.right {
-    right: 0;
-    align-items: center;
-    justify-content: flex-start;
-    bottom: auto;
-    width: auto;
-    padding-top: 2px;
-  }
-  &.left {
-    left: 0;
-    padding-top: 0;
-    width: 25%;
-  }
+  left: 0;
+  right: 0;
+  background: white;
+  top: auto;
+  display: flex;
+  padding-top: 16px;
+  align-items: center;
+  padding: 4px;
+  z-index: 900;
+  justify-content: flex-end;
   .dash {
     width: 100%;
     height: 100%;

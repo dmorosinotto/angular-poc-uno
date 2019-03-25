@@ -13,7 +13,6 @@ import { BaseFrmComponent } from "@base/base-frm.component";
       ><input formControlName="prov" (keyup.enter)="onEnter($event.target, 'prov')" />
     </fieldset>
   `,
-  styles: ["input.ng-invalid { border: 2px red solid }"]
 })
 export class AddressFrmComponent extends BaseFrmComponent<IAddress> {
   initFrm(): FormGroupTyped<IAddress> {

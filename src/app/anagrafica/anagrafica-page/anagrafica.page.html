@@ -1,4 +1,4 @@
-<div [formGroup]="frm">
+<div class="d-form" [formGroup]="frm">
   <app-friends-arr formControlName="friends"></app-friends-arr>
   <hr />
   <app-amicici-arr formArrayName="amicici"></app-amicici-arr>
@@ -18,36 +18,36 @@
   <ui-codfisc formControlName="cf"></ui-codfisc>
   <app-xxx-frm formControlName="XXX"></app-xxx-frm>
 </div>
-<div class="button-sticky right">
-  <button class="orange" (click)="Load()">LOAD Happiness</button>
+<div class="button-sticky">
+  <button class="primary" (click)="Load()">LOAD Happiness</button>
   <button [disabled]="frm.invalid" class="green" (click)="Save()">Send pods to the moon</button>
-  <hr />
-  <div style="position: absolute; top:200px">
+</div>
+<div class="debug">
+  <div class="path">
     PATH:<input #path (blur)="refresh()" (keyup.enter)="refresh()" />
     <pre *ngIf="frm.get(path.value) as deep; else nothing">
-      VALUE = {{ deep.value | json }}
-      VALID = {{ deep.valid | json }}
-      ALLERR= {{ deep | allerr | json }}
-    </pre>
+            VALUE = {{ deep.value | json }}
+            VALID = {{ deep.valid | json }}
+            ALLERR= {{ deep | allerr | json }}
+          </pre
+    >
     <ng-template #nothing>
       <h3>
         NON RIESCO A NAVIGARE <code>frm.get("{{ path.value }}")</code>
       </h3>
     </ng-template>
   </div>
-</div>
-
-<div class="button-sticky left">
   <div class="dash">
     <h5>FormGroup</h5>
     <pre>
-VALID={{ frm.valid }} 
-- ERRORS={{ frm | allerr | json }}</pre
+    VALID={{ frm.valid }} 
+    - ERRORS={{ frm | allerr | json }}</pre
     >
     <pre>{{ frm?.value | json }}</pre>
     <h5>Dto</h5>
     <pre>
-      DTO={{ dto | json }}
-    </pre>
+          DTO={{ dto | json }}
+        </pre
+    >
   </div>
 </div>

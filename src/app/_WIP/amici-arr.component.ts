@@ -24,7 +24,7 @@ import { NameFrmComponent } from "../anagrafica/common/name-frm.component";
       <div formArrayName="amici">
         <article *ngFor="let ctrl of arr.controls; index as i">
           <div class="button-right">
-            <button (click)="rem(i)" class="brown">Remove</button>
+            <button (click)="rem(i)" class="error">Remove</button>
           </div>
           <app-name-frm [formControlName]="i"></app-name-frm>
         </article>

@@ -25,7 +25,6 @@ const IMPLEMENT_VALIDATE_LOGIC = null;
     { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => UiCodfiscComponent) },
     { provide: NG_VALIDATORS, multi: true, useExisting: forwardRef(() => UiCodfiscComponent) }
   ],
-  styles: ["input.ng-invalid { border-left: 2px solid red }", "input.ng-valid { border: 1px solid green }"]
 })
 export class UiCodfiscComponent extends BaseCtrl<string> implements Validator {
   constructor() {

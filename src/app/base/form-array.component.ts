@@ -15,7 +15,7 @@ interface IItemArrayCtx {
     <div>
       <article *ngFor="let ctrl of arr.controls; index as idx">
         <div class="button-right">
-          <button (click)="rem(idx)" class="brown">Remove</button>
+          <button (click)="rem(idx)" class="error">Remove</button>
         </div>
         <ng-container *ngTemplateOutlet="itemTpl; context: getCtx(ctrl, idx)"></ng-container>
       </article>
