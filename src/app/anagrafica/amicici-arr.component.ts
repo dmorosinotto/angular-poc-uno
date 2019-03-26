@@ -13,6 +13,7 @@ import {
 } from "@angular/forms";
 import { AddressFrmComponent } from "./common/address-frm.component";
 import { NameFrmComponent } from "./common/name-frm.component";
+import { LAYOUT_TOKEN, Layouts } from "@base/LayoutToken";
 
 @Component({
   selector: "app-amicici-arr",
@@ -36,7 +37,10 @@ import { NameFrmComponent } from "./common/name-frm.component";
     </fieldset>
   `,
   styles: [],
-  providers: [{ provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => AmiciciArrComponent) }]
+  providers: [
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: forwardRef(() => AmiciciArrComponent) },
+    { provide: LAYOUT_TOKEN, useValue: "VIEW" as Layouts }
+  ]
   //providers: [{ provide: NgControl, multi: true, useExisting: forwardRef(() => AmiciciArrComponent) }]
 })
 export class AmiciciArrComponent implements ControlValueAccessor, Validator, OnInit {

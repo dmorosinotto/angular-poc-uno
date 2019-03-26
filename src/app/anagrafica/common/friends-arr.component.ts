@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { FormArray, NgControl, ValidationErrors } from "@angular/forms";
 import { BaseArrComponent } from "@base/base-arr.component";
-import { LAYOUT_TOKEN, ILayoutWizzard } from "@base/LayoutToken";
 
 @Component({
   selector: "app-friends-arr",
@@ -29,9 +28,7 @@ import { LAYOUT_TOKEN, ILayoutWizzard } from "@base/LayoutToken";
       >
     </fieldset>
   `,
-  styles: ['*.ng-invalid:before { content: "!!!"; color: red }', '*.ng-valid:before { content: "Ok"; color: green }'],
-
-  providers: [{ provide: LAYOUT_TOKEN, useValue: { type: "WIZZARD" } as ILayoutWizzard }]
+  styles: ['*.ng-invalid:before { content: "!!!"; color: red }', '*.ng-valid:before { content: "Ok"; color: green }']
 })
 export class FriendsArrComponent extends BaseArrComponent<IFullname> {
   initArr(): FormArrayTyped<IFullname> {

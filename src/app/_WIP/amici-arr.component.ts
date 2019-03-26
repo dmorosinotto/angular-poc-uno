@@ -12,6 +12,7 @@ import {
 } from "@angular/forms";
 import { AddressFrmComponent } from "../anagrafica/common/address-frm.component";
 import { NameFrmComponent } from "../anagrafica/common/name-frm.component";
+import { LAYOUT_TOKEN, Layouts } from "@base/LayoutToken";
 
 @Component({
   selector: "app-amici-arr",
@@ -31,7 +32,8 @@ import { NameFrmComponent } from "../anagrafica/common/name-frm.component";
       </div>
     </fieldset>
   `,
-  styles: []
+  styles: [],
+  providers: [{ provide: LAYOUT_TOKEN, useValue: "WIZZARD" as Layouts }]
 })
 export class AmiciArrComponent implements ControlValueAccessor, Validator, OnInit {
   onTouch = () => {};

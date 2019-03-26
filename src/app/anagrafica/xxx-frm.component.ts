@@ -2,6 +2,7 @@ import { Component, Self } from "@angular/core";
 import { FormGroup, FormControl, NgControl, ValidationErrors } from "@angular/forms";
 import { BaseFrmComponent } from "@base/base-frm.component";
 import { takeUntil } from "rxjs/operators";
+import { LAYOUT_TOKEN, Layouts } from "@base/LayoutToken";
 
 @Component({
   selector: "app-xxx-frm",
@@ -16,6 +17,7 @@ import { takeUntil } from "rxjs/operators";
       >
     </fieldset>
   `,
+  providers: [{ provide: LAYOUT_TOKEN, useValue: "VIEW" as Layouts }]
 })
 export class XxxFrmComponent extends BaseFrmComponent<IXxx> {
   initFrm() {

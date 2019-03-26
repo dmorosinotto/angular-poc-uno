@@ -12,4 +12,8 @@ export class APIDataService {
   getAnagrafica(): Observable<IAnagrafica> {
     return this.http.get<IAnagrafica>(environment.baseapi + "/fakeapi.json");
   }
+
+  getProvList(): Observable<IProvincia[]> {
+    return this.http.get<IProvincia[]>(environment.baseapi + "/province.json");
+  }
 }

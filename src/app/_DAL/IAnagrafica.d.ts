@@ -14,16 +14,18 @@ interface IAnagrafica {
   spedizioneT: IRecapito;
   contatti: IContatto[];
 
-  coniuge: INominativo & {
-    sposato: boolean;
-    codfisc?: string;
-  };
+  coniuge: IConiuge;
   referente: IFullname;
   amicici: IFullname[];
   data: ISOString;
   cf: string;
   XXX: IXxx;
-  friends: Array<IFullname & { cf?: string }>;
+  friends: Array<IFullname & { dato?: string }>;
+}
+
+interface IConiuge extends INominativo {
+  sposato: boolean;
+  codfisc?: string;
 }
 
 interface IContatto {
@@ -39,4 +41,10 @@ interface IFullname {
 interface IXxx {
   amici: IFullname[];
   quanti: number;
+}
+
+interface IProvincia {
+  prov: string;
+  regione: string;
+  id: number;
 }
