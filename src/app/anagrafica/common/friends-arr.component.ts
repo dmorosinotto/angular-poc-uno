@@ -29,10 +29,8 @@ import { LAYOUT_TOKEN, ILayoutWizzard } from "@base/LayoutToken";
       >
     </fieldset>
   `,
-  styles: [
-    "*.ng-invalid { border-left: 4px solid blue; padding-left:10px }",
-    "*.ng-valid { border: 4px solid yellow; padding-left:10px }"
-  ],
+  styles: ['*.ng-invalid:before { content: "!!!"; color: red }', '*.ng-valid:before { content: "Ok"; color: green }'],
+
   providers: [{ provide: LAYOUT_TOKEN, useValue: { type: "WIZZARD" } as ILayoutWizzard }]
 })
 export class FriendsArrComponent extends BaseArrComponent<IFullname> {

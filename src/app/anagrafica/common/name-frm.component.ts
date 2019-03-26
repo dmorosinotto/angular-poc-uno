@@ -22,9 +22,9 @@ import { LAYOUT_TOKEN, Layouts } from "@base/LayoutToken";
     -->
   `,
   styles: [
-    "ui-textbox.ng-invalid { border-left: 2px solid red }",
-    "ui-textbox.ng-valid { border: 1px solid green }",
-    "span {color: violet; font-size:25px }"
+    'ui-textbox.ng-invalid { border-left: 4px solid red; padding-left: 6px }',
+    'ui-textbox.ng-valid { border-left: 4px solid green; padding-left: 2px }',
+    'span {color: violet; font-size:25px }'
   ]
 })
 export class NameFrmComponent extends BaseFrmComponent<{ name: string; surname: string }> {

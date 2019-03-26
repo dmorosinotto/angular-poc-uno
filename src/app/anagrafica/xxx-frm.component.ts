@@ -16,7 +16,6 @@ import { takeUntil } from "rxjs/operators";
       >
     </fieldset>
   `,
-  styles: ["input.ng-invalid { border: 2px red solid }"]
 })
 export class XxxFrmComponent extends BaseFrmComponent<IXxx> {
   initFrm() {

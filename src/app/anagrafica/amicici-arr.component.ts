@@ -26,7 +26,7 @@ import { NameFrmComponent } from "./common/name-frm.component";
         <!--<b>{{ arr.length }} =?= {{ arr.controls.length }}</b>-->
         <article *ngFor="let ctrl of arr.controls; index as i">
           <div class="button-right">
-            <button (click)="rem(i)" class="brown">Remove</button>
+            <button (click)="rem(i)" class="error">Remove</button>
           </div>
           <i>{{ i }} - {{ ctrl.value | json }}</i>
 

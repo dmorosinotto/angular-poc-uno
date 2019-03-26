@@ -8,7 +8,7 @@ import { LAYOUT_TOKEN, ILayoutGrid } from "@base/LayoutToken";
 @Component({
   //selector: "app-anagrafica-page",
   templateUrl: "anagrafica.page.html",
-  styles: ["*.ng-invalid {border: 2px red solid; padding-left: 5px}", "*.ng-valid {border: 2px green solid}"],
+  styles: ['*.ng-invalid {border-left: 4px red solid; padding-left: 8px}', '*.ng-valid {border-left: 4px green solid; padding-left: 2px}'],
   providers: [{ provide: LAYOUT_TOKEN, useValue: { type: "GRID", columns: 3 } as ILayoutGrid }]
 })
 export class AnagraficaPage extends BaseComponent implements OnInit {
