@@ -1,4 +1,4 @@
-import { Component, OnInit, Self, Injector } from "@angular/core";
+import { Component, OnInit, Self, Injector, Optional } from "@angular/core";
 import {
   FormArray,
   FormControl,
@@ -42,7 +42,7 @@ export class AmiciArrComponent implements ControlValueAccessor, Validator, OnIni
     amici: new FormArray([])
   });
   arr: FormArray;
-  constructor(@Self() public controlDir: NgControl /*, private injector: Injector*/) {
+  constructor(@Optional() @Self() public controlDir: NgControl /*, private injector: Injector*/) {
     this.arr = this.frm.get("amici") as FormArray;
     controlDir.valueAccessor = this;
     // console.log('CTRLDIR', controlDir);

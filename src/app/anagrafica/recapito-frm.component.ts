@@ -1,4 +1,4 @@
-import { Component, Self } from "@angular/core";
+import { Component, Self, Optional } from "@angular/core";
 import { FormGroup, FormControl, NgControl } from "@angular/forms";
 import { BaseFrmComponent } from "@base/base-frm.component";
 import { IRecapito } from "../_DAL/IRecapito";
@@ -27,7 +27,7 @@ export class RecapitoFrmComponent extends BaseFrmComponent<IRecapito> {
     //frm.get("recapito").disable();
     return frm;
   }
-  constructor(@Self() public controlDir: NgControl) {
+  constructor(@Optional() @Self() public controlDir: NgControl) {
     super(controlDir);
     //LOGICA DI INTERFACCIA/BUSINESS PER TENERE COERENTE uguaglio <-> enable/disable
     this.frm

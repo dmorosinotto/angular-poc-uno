@@ -1,4 +1,4 @@
-import { Component, Self } from "@angular/core";
+import { Component, Self, Optional } from "@angular/core";
 import { FormGroup, FormControl, NgControl, ValidationErrors } from "@angular/forms";
 import { BaseFrmComponent } from "@base/base-frm.component";
 import { takeUntil } from "rxjs/operators";
@@ -27,7 +27,7 @@ export class XxxFrmComponent extends BaseFrmComponent<IXxx> {
     }) as FormGroupTyped<IXxx>;
   }
 
-  constructor(@Self() public controlDir: NgControl) {
+  constructor(@Optional() @Self() public controlDir: NgControl) {
     super(controlDir);
     //ESEMPIO DI BUSINESS LOGIC TIENE ALLINEATO QUANTI <--> AMICI.length
     this.frm.controls.amici.valueChanges

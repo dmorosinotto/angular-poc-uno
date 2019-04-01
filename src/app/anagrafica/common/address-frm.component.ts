@@ -1,4 +1,4 @@
-import { Component, Self } from "@angular/core";
+import { Component, Self, Optional } from "@angular/core";
 import { FormGroup, FormControl, NgControl, Validators, ValidationErrors } from "@angular/forms";
 import { BaseFrmComponent } from "@base/base-frm.component";
 import { ContextService } from "@base/context.service";
@@ -32,7 +32,7 @@ export class AddressFrmComponent extends BaseFrmComponent<IAddress> {
     ) as FormGroupTyped<IAddress>;
   }
 
-  constructor(@Self() public controlDir: NgControl, private ctx: ContextService) {
+  constructor(@Optional() @Self() public controlDir: NgControl, private ctx: ContextService) {
     super(controlDir);
   }
 

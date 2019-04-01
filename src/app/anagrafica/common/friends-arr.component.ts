@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Optional } from "@angular/core";
 import { FormArray, NgControl, ValidationErrors } from "@angular/forms";
 import { BaseArrComponent } from "@base/base-arr.component";
 
@@ -35,7 +35,7 @@ export class FriendsArrComponent extends BaseArrComponent<IFullname> {
     return new FormArray([], this.atLeastOne) as FormArrayTyped<IFullname>;
   }
 
-  constructor(public controlDir: NgControl) {
+  constructor(@Optional() public controlDir: NgControl) {
     super(controlDir);
     console.log("FRIENDS CTRLDIR", controlDir);
   }

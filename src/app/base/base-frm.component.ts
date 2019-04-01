@@ -1,4 +1,4 @@
-import { Self, OnInit } from "@angular/core";
+import { Self, OnInit, Optional } from "@angular/core";
 import { FormGroup, NgControl, ControlValueAccessor, ValidatorFn, ValidationErrors } from "@angular/forms";
 import { BaseComponent } from "./base.component";
 import { aggregateErrors } from "./all-errors.pipe";
@@ -8,7 +8,7 @@ export abstract class BaseFrmComponent<T> extends BaseComponent implements Contr
   abstract initFrm(): FormGroupTyped<T>;
 
   frm: FormGroupTyped<T>;
-  constructor(@Self() public controlDir: NgControl) {
+  constructor(@Optional() @Self() public controlDir: NgControl) {
     super();
     this.frm = this.initFrm();
     controlDir.valueAccessor = this;

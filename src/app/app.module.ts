@@ -5,7 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AnagraficaPage } from "./anagrafica/anagrafica-page/anagrafica.page";
 import { HttpClientModule } from "@angular/common/http";
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { NominativoFldComponent } from "./anagrafica/nominativo-fld.component";
 import { AddressFrmComponent } from "./anagrafica/common/address-frm.component";
 import { NameFrmComponent } from "./anagrafica/common/name-frm.component";
@@ -44,7 +44,7 @@ import { FormArrayComponent } from "./base/form-array.component";
     FormArrayComponent
   ],
   entryComponents: [NameFrmComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
