@@ -9,7 +9,10 @@ export class ContextService implements OnDestroy {
   ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
+    //cleanup internals (I don't know if it's safer to execute this in next tick using Promise.resolve().then( ()=>for...)
+    for (let _key in this._) (this._[_key] as unknown) = undefined;
   }
+
   private _: {
     [_key: string]: BehaviorSubject<unknown | undefined>;
   } = {};
@@ -17,14 +20,10 @@ export class ContextService implements OnDestroy {
   provide<T>(key: string | InjectionToken<T>, initVal?: T): Observer<T> {
     const _key = key.toString();
     if (!(_key in this._)) this._[_key] = new BehaviorSubject<T | undefined>(initVal);
-    else if (initVal) this._[_key].next(initVal);
+    else this._[_key].next(initVal); //if no initVal is passed it emit undefined but it's filtered in the get$ ;-)
 
     return {
-      next: x => {
-        console.warn("NEXT --->", x);
-        this._[_key].next(x);
-        console.log("AFTER NEXT", this._[_key].value);
-      },
+      next: this._[_key].next,
       error: this._[_key].error,
       complete: this._[_key].complete
     };
@@ -34,8 +33,8 @@ export class ContextService implements OnDestroy {
     const _key = key.toString();
     if (!(_key in this._)) this._[_key] = new BehaviorSubject<T | undefined>(undefined);
     return (this._[_key].asObservable() as Observable<T>).pipe(
-      takeUntil(this._destroy$),
-      filter(t => t !== undefined)
+      filter(t => t !== undefined), //filter the initial undefined, or possible initVal not passed (ndr undefined)
+      takeUntil(this._destroy$)
     );
   }
 }
