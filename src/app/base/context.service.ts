@@ -1,7 +1,6 @@
-import { Injectable, OnDestroy } from "@angular/core";
+import { Injectable, OnDestroy, InjectionToken } from "@angular/core";
 import { Observable, Observer, BehaviorSubject, Subject } from "rxjs";
 import { takeUntil, filter } from "rxjs/operators";
-import { InjectionToken } from "@angular/core";
 
 @Injectable()
 export class ContextService implements OnDestroy {
@@ -33,7 +32,6 @@ export class ContextService implements OnDestroy {
 
   get$<T>(key: string | InjectionToken<T>): Observable<T> {
     const _key = key.toString();
-    console.log("EXIST", _key in this._);
     if (!(_key in this._)) this._[_key] = new BehaviorSubject<T | undefined>(undefined);
 
     return (this._[_key].asObservable() as Observable<T>).pipe(
