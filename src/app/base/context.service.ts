@@ -39,4 +39,10 @@ export class ContextService implements OnDestroy {
       takeUntil(this._destroy$)
     );
   }
+
+  curr<T>(key: string | InjectionToken<T>): T | undefined {
+    const _key = key.toString();
+    if (_key in this._) return this._[_key].getValue() as T | undefined;
+    else return undefined;
+  }
 }
