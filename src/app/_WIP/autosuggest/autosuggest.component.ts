@@ -5,7 +5,13 @@ interface ISuggest{id: number, suggest: string}
 @Component({
   selector: 'app-autosuggest',
   template: `
+  <ng-container *ngIf="obs$ | async as dto">
+    <p>{{ dto }}.text</p>
+    <img *ngIf="{{ img$ | async as IMMAGINE }}?.src" [src]="IMMAGINE.src">
+    <ul><li>{{ dto | uppecase }}</li></ul>
+    <pre>{{ dto | json }}
     <input (input)="utenteCambia($event)">
+  </ng-container>
   `,
   styles: []
 })
@@ -39,3 +45,6 @@ class parentCmp {
     }
   }
 }
+
+
+

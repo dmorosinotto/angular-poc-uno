@@ -22,6 +22,9 @@ import { FriendsArrComponent } from "./anagrafica/common/friends-arr.component";
 import { IvanoFrmComponent } from "./_WIP/ivano-frm.component";
 import { XxxFrmComponent } from "./anagrafica/xxx-frm.component";
 import { FormArrayComponent } from "./base/form-array.component";
+import { mycolDirective } from "./_WIP/mycolDirective";
+import { mytableComponent } from "./_WIP/mytableComponent";
+import { mySampleComponent } from "./_WIP/mysampleComponent";
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,10 @@ import { FormArrayComponent } from "./base/form-array.component";
     FriendsArrComponent,
     IvanoFrmComponent,
     XxxFrmComponent,
-    FormArrayComponent
+    FormArrayComponent,
+    mycolDirective,
+    mytableComponent,
+    mySampleComponent
   ],
   entryComponents: [NameFrmComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
